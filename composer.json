@@ -1,0 +1,22 @@
+{
+  "name": "sergey144010/php-base-function-extension",
+  "version": "0.0.1",
+  "type": "library",
+  "description": "Extensions for base php functions",
+  "keywords": ["php", "extension", "base", "function"],
+  "homepage": "https://github.com/sergey144010/php-base-function-extension",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sergey144010",
+      "email": "sergey144010@mail.ru",
+      "homepage": "https://github.com/sergey144010"
+    }
+  ],
+  "require": {
+    "php": ">=5.4"
+  },
+  "autoload": {
+    "psr-0": { "BaseFunctionExtension\\BaseFunctionExtension": "src/" }
+  }
+}
