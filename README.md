@@ -1,7 +1,7 @@
 php-base-function-extension
 ==========================
 
-Version 0.01
+Version 0.0.1
 
 Adaptation for Composer and PSR-0 of:
 
