@@ -33,6 +33,7 @@ $array = array(
     'qwe4' => 'asd1',
 );
 
-var_dump(ArrayExt::arrayValRepeat($array));
-echo '<br>';
 var_dump(ArrayExt::isArrayValRepeat($array));
+echo '<br>';
+var_dump(ArrayExt::arrayValRepeat($array, false));
+

@@ -99,27 +99,12 @@ class ArrayExt
     public static function is_array_value_repeat( $array )
     {
         if(is_array($array)){
-
-            foreach($array as $key=>$val){
-                foreach($array as $key2=>$val2){
-                    if($key === $key2){continue;};
-                    if($val === $val2){return true;};
+            foreach($array as $key_one=>$val_one){
+                foreach($array as $key_two=>$val_two){
+                    if($key_one === $key_two){continue;};
+                    if($val_one === $val_two){return true;};
                 };
             };
-
-/*
-            $array_one = $array;
-            $array_two = $array;
-            foreach ($array_one as $key_one=>$val_one) {
-
-                foreach ($array_two as $key_two=>$val_two) {
-                    if($key_one === $key_two){continue;};
-                    if($val_one === $val_two){ return true;};
-                }
-
-
-            }
-*/
             return false;
         }else{
             /* На входе не массив */
@@ -129,12 +114,17 @@ class ArrayExt
     }
 
     /*
-     * Возвращает встречающиеся значения в массиве
+     * Возвращает повторяющиеся значения из входящего массива
      * если такие имеются, иначе false.
      *
      * Принимает массив и возвращает массив повторяющихся значений.
-     * Если второй аргумент true, то возвращает массив с исходными ключами.
-     * Если второй аргумент false, то возвращает массив не сохраняя исходные ключи.
+     *
+     * Если второй аргумент true, то возвращает массив
+     * ключи которого - это повторяющиеся значения, а значения - это массив ключей этих
+     * значений.
+     * Если второй аргумент false, то возвращает массив
+     * ключи которого - это повторяющиеся значения, а значения - это количество повторений
+     * в исходном массиве.
      *
      * @return array
      * false otherwise.
@@ -161,9 +151,9 @@ class ArrayExt
 
             if($key_save === false){
                 $array_preparation = self::array_value_repeat($array, true);
-                foreach ($array_preparation as $key3=>$val3) {
-                    for ($i=1;$i<=count($val3);$i++){
-                        $array_out[] = $key3;
+                if($array_preparation){
+                    foreach ($array_preparation as $key3=>$val3) {
+                        $array_out[$key3] = count($val3);
                     };
                 };
             };
