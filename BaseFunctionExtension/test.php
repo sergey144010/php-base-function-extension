@@ -36,4 +36,5 @@ $array = array(
 var_dump(ArrayExt::isArrayValRepeat($array));
 echo '<br>';
 var_dump(ArrayExt::arrayValRepeat($array, false));
-
+echo '<br>';
+var_dump(ArrayExt::countValRepeat($array, 0));

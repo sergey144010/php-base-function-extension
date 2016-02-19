@@ -191,4 +191,36 @@ class ArrayExt
         if(!isset($args[1])){$args[1]=true;};
         return self::array_value_repeat($args[0], $args[1]);
     }
+    /*
+     * Возвращает количество заданного повторяющегося значения массива
+     * или false если такого значения нет в исходном массиве или оно не повторяется ни разу.
+     *
+     * Пример:
+     *
+     * Для массива
+     *
+       $array = array(
+            123 => 0,
+            7 => 7,
+            12 => 0,
+        );
+     *
+     * ArrayExt::countValRepeat($array, 0)
+     * вернёт (integer) 2
+     * ArrayExt::countValRepeat($array, 7)
+     * вернёт (boolean) false
+     *
+     * @return integer || false
+     * */
+    public static function countValRepeat($array, $val)
+    {
+        $count = false;
+        $array_preparation = self::array_value_repeat($array, false);
+        if($array_preparation){
+            if (array_key_exists($val, $array_preparation)) {
+                $count = $array_preparation[$val];
+            };
+        };
+        return $count;
+    }
 }

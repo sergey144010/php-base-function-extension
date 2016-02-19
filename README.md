@@ -43,6 +43,8 @@ or
 if(ArrayExt::isArrayKeyString($array)){
     #some code
 }
+or
+$countValRepeat = ArrayExt::countValRepeat($array, 0);
 
 ...
 
