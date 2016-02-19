@@ -96,6 +96,14 @@ class ArrayExt
      *
      * @return true || false
      */
+
+    /* !!! Доработать этот метод !!!
+         * $array = array(
+            123 => 0,
+            'qwe' => 'asd1',
+        );
+         * здесь выводит true
+         */
     public static function is_array_value_repeat( $array )
     {
         if(is_array($array)){
@@ -113,13 +121,6 @@ class ArrayExt
             return false;
         };
     }
-/* !!!
- * $array = array(
-    123 => 0,
-    'qwe' => 'asd1',
-);
- * здесь выводит true
- */
 
     /*
      * Возвращает встречающиеся значения в массиве
