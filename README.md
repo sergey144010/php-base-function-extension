@@ -12,7 +12,7 @@ Install
      "repositories":[
          {
  			"type": "vcs",
-             "url":"https://github.com/sergey144010/php-base-function-extension",
+            "url":"https://github.com/sergey144010/php-base-function-extension",
          }
      ],
      "require": {

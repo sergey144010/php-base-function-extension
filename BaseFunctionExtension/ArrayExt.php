@@ -96,14 +96,6 @@ class ArrayExt
      *
      * @return true || false
      */
-
-    /* !!! Доработать этот метод !!!
-         * $array = array(
-            123 => 0,
-            'qwe' => 'asd1',
-        );
-         * здесь выводит true
-         */
     public static function is_array_value_repeat( $array )
     {
         if(is_array($array)){
@@ -111,9 +103,23 @@ class ArrayExt
             foreach($array as $key=>$val){
                 foreach($array as $key2=>$val2){
                     if($key === $key2){continue;};
-                    if($val == $val2){return true;};
+                    if($val === $val2){return true;};
                 };
             };
+
+/*
+            $array_one = $array;
+            $array_two = $array;
+            foreach ($array_one as $key_one=>$val_one) {
+
+                foreach ($array_two as $key_two=>$val_two) {
+                    if($key_one === $key_two){continue;};
+                    if($val_one === $val_two){ return true;};
+                }
+
+
+            }
+*/
             return false;
         }else{
             /* На входе не массив */
@@ -126,11 +132,9 @@ class ArrayExt
      * Возвращает встречающиеся значения в массиве
      * если такие имеются, иначе false.
      *
-     * Принимает исходный массив и возвращает массив с одинаковыми значеними.
+     * Принимает массив и возвращает массив повторяющихся значений.
      * Если второй аргумент true, то возвращает массив с исходными ключами.
      * Если второй аргумент false, то возвращает массив не сохраняя исходные ключи.
-     * Второй аргумент имеет смысл ставить в false если уверены, что в исходном массиве
-     * только одно значение имеет совпадения.
      *
      * @return array
      * false otherwise.
@@ -138,26 +142,28 @@ class ArrayExt
     public static function array_value_repeat( $array, $key_save=true  )
     {
         if(is_array($array)){
+
             $array_out = false;
-            foreach($array as $key=>$val){
-                foreach($array as $key2=>$val2){
-                    if($key === $key2){continue;};
-                    if($val == $val2){
-                        if($key_save === true){
+
+            if($key_save === true){
+                foreach($array as $key=>$val){
+                    foreach($array as $key2=>$val2){
+                        if($key === $key2){continue;};
+                        if($val === $val2){
+                            if(isset($array_out[$val]) and in_array($key ,$array_out[$val], true)){
+                                continue;
+                            };
                             $array_out[$val][] = $key;
-                        };
-                        if($key_save === false){
-                            # Здесь сохранение найденного
-                            $array_out[] = $val;
-                            #$array_out[] = $val2;
                         };
                     };
                 };
             };
-            if($key_save === true){
-                if(is_array($array_out)){
-                    foreach ($array_out as $key=>$val) {
-                        $array_out[$key] = array_unique($val);
+
+            if($key_save === false){
+                $array_preparation = self::array_value_repeat($array, true);
+                foreach ($array_preparation as $key3=>$val3) {
+                    for ($i=1;$i<=count($val3);$i++){
+                        $array_out[] = $key3;
                     };
                 };
             };
