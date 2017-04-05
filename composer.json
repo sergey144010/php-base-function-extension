@@ -16,6 +16,6 @@
     "php": ">=5.4"
   },
   "autoload": {
-    "classmap": ["BaseFunctionExtension/"]
+    "psr-4": {"sergey144010\\BaseFunctionExtension\\": "BaseFunctionExtension"}
   }
 }
