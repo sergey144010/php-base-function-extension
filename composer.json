@@ -1,6 +1,5 @@
 {
   "name": "sergey144010/php-base-function-extension",
-  "version": "0.0.1",
   "type": "library",
   "description": "Extensions for base php functions",
   "keywords": ["php", "extension", "base", "function"],
@@ -17,6 +16,6 @@
     "php": ">=5.4"
   },
   "autoload": {
-    "classmap": ["BaseFunctionExtension/"]
+    "psr-4": {"sergey144010\\BaseFunctionExtension\\": "BaseFunctionExtension"}
   }
 }
